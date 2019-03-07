@@ -113,25 +113,38 @@ public class LoadUser extends DBAccess {
      * Given a username and date, queries database for all calories consumed that date and
      * returns total amount.
      *
-     * @param u
-     * @param d
+     * @param user
+     * @param date
+     * @param burned
      * @return int calories
      * @throws SQLException
      */
-    public static int getCaloriesByDate(String u, Date d) throws SQLException {
+    public static int getCaloriesByDate(String user, Date date, Boolean burned) throws SQLException {
         ResultSet rs = null;
         int kcals = 0;
+        int burn = 0;
         getConnection();
 
         rs = st.executeQuery("SELECT KCALS FROM CALORIECOUNTS WHERE USERNAME = '"
-                +u+"' AND DATE = '"+d+"'");
+                +user+"' AND DATE = '"+date+"'");
+
+        int temp;
         while (rs.next()) {
-            kcals += rs.getInt(1);
+            temp = rs.getInt(1);
+            if(temp > 0){
+                kcals += temp;
+            } else {
+                burn += temp;
+            }
         }
 
         closeConnection();
 
-        return kcals;
+        if(burned){
+            return burn;
+        } else {
+            return kcals;
+        }
     }
 
     public static void main(String[] args) throws SQLException {
