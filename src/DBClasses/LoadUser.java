@@ -8,6 +8,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+/**
+ * Class used to load a specific user from database. Creates connection and populates required
+ * fields from ResultSet - then returns User class when getUser() is called.
+ */
 public class LoadUser extends DBAccess {
 
     private User u;
@@ -19,9 +23,15 @@ public class LoadUser extends DBAccess {
     private double weight, activityLevel;
     private ArrayList<Goal> goals;
 
+    /**
+     * Creates new User object with corresponding details of String entered in parameter
+     * @param un
+     * @throws SQLException
+     */
     public LoadUser(String un) throws SQLException {
         goals = new ArrayList<>();
-        populateData(un);
+        this.userName = un;
+        populateData();
 
         u = new User(userName);
         u.setPassword(password);
@@ -43,14 +53,19 @@ public class LoadUser extends DBAccess {
 
     }
 
+    /**
+     * Get loaded user
+     * @return User
+     */
     public User getUser() {
         return u;
     }
 
-    private void populateData(String userName) throws SQLException {
-
-        this.userName = userName;
-
+    /**
+     * Queries database to populate all fields required to initialise User class
+     * @throws SQLException
+     */
+    private void populateData() throws SQLException {
 
         getConnection();
 
@@ -94,39 +109,37 @@ public class LoadUser extends DBAccess {
         closeConnection();
     }
 
-    public static int getCaloriesByDate(String user, Date date, Boolean burned) throws SQLException {
+    /**
+     * Given a username and date, queries database for all calories consumed that date and
+     * returns total amount.
+     *
+     * @param u
+     * @param d
+     * @return int calories
+     * @throws SQLException
+     */
+    public static int getCaloriesByDate(String u, Date d) throws SQLException {
         ResultSet rs = null;
         int kcals = 0;
-        int burn = 0;
         getConnection();
 
         rs = st.executeQuery("SELECT KCALS FROM CALORIECOUNTS WHERE USERNAME = '"
-                +user+"' AND DATE = '"+date+"'");
-        int temp;
+                +u+"' AND DATE = '"+d+"'");
         while (rs.next()) {
-            temp = rs.getInt(1);
-            if (temp > 0) {
-                kcals += temp;
-            } else {
-                burn += temp;
-            }
+            kcals += rs.getInt(1);
         }
 
         closeConnection();
 
-        if (burned) {
-            return burn;
-        } else {
-            return kcals;
-        }
+        return kcals;
     }
 
     public static void main(String[] args) throws SQLException {
 
-        //User user = new LoadUser("imacpro").getUser();
-        //System.out.println(user.getUserName());
-        //System.out.println(user.toString());
-        //System.out.println(user.getGoals());
+        User user = new LoadUser("imacpro").getUser();
+        System.out.println(user.getUserName());
+        System.out.println(user.toString());
+        System.out.println(user.getGoals());
 
         //int rodneyCals = getCaloriesByDate("rodney", new Date(119, 1, 23));
         //System.out.println(rodneyCals);

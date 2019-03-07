@@ -6,12 +6,19 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+/**
+ * Class holds static methods for adding to database
+ */
 public final class DBAdd extends DBAccess{
 
     private DBAdd(){
 
     }
 
+    /**
+     * Populates USER and PROFILE tables of database with given User details
+     * @param u
+     */
     public static void addUser(User u){
 
         getConnection();
@@ -27,6 +34,10 @@ public final class DBAdd extends DBAccess{
 
     }
 
+    /**
+     * Populates FOOD table of database with given Food
+     * @param f
+     */
     public static void addFood(Food f){
         getConnection();
         try {
@@ -38,6 +49,10 @@ public final class DBAdd extends DBAccess{
         closeConnection();
     }
 
+    /**
+     * Allows adding of a custom Food
+     * @param f
+     */
     public static void addCustomFood(Food f){
         getConnection();
         try {
@@ -50,6 +65,12 @@ public final class DBAdd extends DBAccess{
         closeConnection();
     }
 
+    /**
+     * Returns list of custom foods for given User
+     * @param category
+     * @param username
+     * @return foods
+     */
     public static ArrayList<String> getFoods(String category, String username) {
         ArrayList<String> foods = new ArrayList<>();
         ResultSet rs = null;
@@ -82,6 +103,11 @@ public final class DBAdd extends DBAccess{
         return foods;
     }
 
+    /**
+     * Returns calories value for given Food
+     * @param food
+     * @return calories
+     */
     public static int getFoodCalories(String food) {
         int calories = 0;
         ResultSet rs = null;
@@ -99,6 +125,13 @@ public final class DBAdd extends DBAccess{
         return calories;
     }
 
+    /**
+     * Returns calories of specific meal identified by given User, Date, String
+     * @param u
+     * @param d
+     * @param m
+     * @return calories
+     */
     public static int getMealCalories(String u, Date d, String m) {
         int calories = 0;
         ResultSet rs = null;
@@ -118,6 +151,11 @@ public final class DBAdd extends DBAccess{
         return calories;
     }
 
+    /**
+     * Adds new goal to database using given ID and Goal
+     * @param id
+     * @param g
+     */
     public static void addGoal(String id, Goal g){
         getConnection();
         try {
@@ -130,6 +168,13 @@ public final class DBAdd extends DBAccess{
         closeConnection();
     }
 
+    /**
+     * Updates calories in database for given User and Date
+     * @param u
+     * @param d
+     * @param c
+     * @param m
+     */
     public static void addCalories(String u, Date d, int c, String m){
         getConnection();
         try {
@@ -140,6 +185,10 @@ public final class DBAdd extends DBAccess{
         closeConnection();
     }
 
+    /**
+     * Adds new given Exercise to database
+     * @param ex
+     */
     public static void addExercise(Exercise ex){
         getConnection();
         try {
@@ -151,6 +200,10 @@ public final class DBAdd extends DBAccess{
         closeConnection();
     }
 
+    /**
+     * Adds custom given exercise to database belonging to particular user
+     * @param ex
+     */
     public static void addCustomExercise(Exercise ex){
         getConnection();
         try {
@@ -162,6 +215,12 @@ public final class DBAdd extends DBAccess{
         closeConnection();
     }
 
+    /**
+     * Return all exercises of given Exercise.Type belonging to given User
+     * @param username
+     * @param type
+     * @return
+     */
     public static ArrayList<String> getExercises(String username, Exercise.Type type) {
         ArrayList<String> exercises = new ArrayList<>();
         ResultSet rs = null;
@@ -181,6 +240,13 @@ public final class DBAdd extends DBAccess{
         return exercises;
     }
 
+    /**
+     * Returns calories burned over given duration for given weight
+     * @param name
+     * @param weight
+     * @param duration
+     * @return calories
+     */
     public static int getExerciseCalories(String name, double weight, int duration) {
         double calories = -1*weight*duration;
         ResultSet rs = null;
@@ -198,6 +264,12 @@ public final class DBAdd extends DBAccess{
         return (int)calories;
     }
 
+    /**
+     * Adds given message to given Group group-chat by given User
+     * @param user
+     * @param group
+     * @param message
+     */
     public static void addMesage(String user, Group group, String message) {
         java.util.Date date = new java.util.Date();
         Timestamp now = new Timestamp(date.getTime());
@@ -210,6 +282,11 @@ public final class DBAdd extends DBAccess{
         }
     }
 
+    /**
+     * Returns all messages for given Group
+     * @param groupID
+     * @return messages
+     */
     public static ArrayList<Message> getMessages(String groupID) {
         ArrayList<Message> messages = new ArrayList<>();
         ResultSet rs = null;

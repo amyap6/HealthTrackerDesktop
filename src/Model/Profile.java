@@ -1,5 +1,9 @@
 package Model;
 
+/**
+ * Abstract parent class storing credentials and methods required by User
+ * and any future Admin etc. classes
+ */
 public abstract class Profile {
 
     private String userName;

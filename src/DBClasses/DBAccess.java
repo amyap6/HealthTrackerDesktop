@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * Abstract class storing access credentials
+ * Abstract class storing database access credentials
  */
 public abstract class DBAccess {
 
@@ -19,6 +19,10 @@ public abstract class DBAccess {
     static Connection conn = null;
     static Statement st = null;
 
+    /**
+     * Initialises Connection and Statement classes
+     * @return void
+     */
     protected static void getConnection(){
         try {
             Class.forName(JDBC_DRIVER);
@@ -29,6 +33,10 @@ public abstract class DBAccess {
         }
     }
 
+    /**
+     * Calls .close() on both the Connection and Statement
+     * @return void
+     */
     protected static void closeConnection(){
         try {
             conn.close();

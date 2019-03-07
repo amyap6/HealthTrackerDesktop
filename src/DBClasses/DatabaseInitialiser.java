@@ -4,7 +4,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *  NOT FOR USAGE AFTER INITIAL DB CREATION
+ *  --NOT FOR USAGE AFTER INITIAL DB CREATION--
+ *  Class to be used at initial implementation of DB to create tables etc.
  */
 public class DatabaseInitialiser extends DBAccess{
 

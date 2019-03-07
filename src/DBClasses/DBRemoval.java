@@ -6,12 +6,19 @@ import Model.User;
 
 import java.sql.SQLException;
 
+/**
+ * Class holds static methods for removing from database
+ */
 public final class DBRemoval extends DBAccess {
 
     private DBRemoval(){
 
     }
 
+    /**
+     * Removes given User from database
+     * @param u
+     */
     public static void removeUser(User u){
         removeAllGoals(u);
         getConnection();
@@ -25,6 +32,10 @@ public final class DBRemoval extends DBAccess {
         closeConnection();
     }
 
+    /**
+     * Removes given Food from database
+     * @param f
+     */
     public static void removeFood(Food f){
         getConnection();
         try {
@@ -48,6 +59,10 @@ public final class DBRemoval extends DBAccess {
         closeConnection();
     }*/
 
+    /**
+     * Removes all goals of given User from database
+     * @param u
+     */
     public static void removeAllGoals(User u){
         getConnection();
         try {
