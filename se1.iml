@@ -8,7 +8,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="h2-1.4.197" level="project" />
-    <orderEntry type="library" name="fontawesomefx-8.9" level="project" />
+    <orderEntry type="library" exported="" name="fontawesomefx-8.9" level="project" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
@@ -29,5 +29,14 @@
     </orderEntry>
     <orderEntry type="library" exported="" name="javamail-1.4" level="project" />
     <orderEntry type="library" exported="" name="Java EE 6-Java EE 6" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/scenebuilder-8.5.0-all.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
