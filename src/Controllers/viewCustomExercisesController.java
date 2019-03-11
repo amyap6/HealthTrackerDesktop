@@ -1,5 +1,8 @@
 package Controllers;
 
+import DBClasses.DBAccess;
+import DBClasses.DBAdd;
+import Model.Exercise;
 import application.Launch;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class viewCustomExercisesController implements Initializable {
@@ -24,11 +28,18 @@ public class viewCustomExercisesController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         Launch.makeStageDraggable(topBar);
 
-        ObservableList<String> items = FXCollections.observableArrayList();
+        ObservableList<String> items = FXCollections.observableArrayList ();
 
-        //get all users custom foods from the database
+        DBAccess.getConnection();
 
-        items.addAll();
+        ArrayList<String> exercises = new ArrayList<>();
+        exercises.addAll(DBAdd.getExercises(Launch.getCurrentUser().getUserName(), Exercise.Type.CARDIO));
+        exercises.addAll(DBAdd.getExercises(Launch.getCurrentUser().getUserName(), Exercise.Type.STRENGTH));
+
+        DBAccess.closeConnection();
+
+        //custom exercises not supported yet so at the moment this shows all exercises in the database
+
         customExercises.setItems(items);
 
     }

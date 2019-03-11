@@ -143,5 +143,14 @@ public class SettingsController implements Initializable{
         DBClasses.DBAccess.closeConnection();
     }
 
+    public void viewCompletedGoals(MouseEvent mouseEvent) throws IOException {
+        if (Launch.stage == Launch.primary){
+            Parent root = FXMLLoader.load(getClass().getResource("/View/viewCompletedGoals.fxml"));
+
+            Launch.newWindow(root, new Stage());
+            Launch.stage.setAlwaysOnTop(true);
+        }
+
+    }
 
 }

@@ -192,7 +192,7 @@
                         <Font size="19.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="264.0" style="-fx-background-color: #EBEBEB; -fx-border-color: linear-gradient(to bottom, #8BC1E7, #D4E8F6); -fx-border-width: 6;" text="View Completed Goals">
+                  <Button fx:id="viewCompletedGoals" mnemonicParsing="false" onMouseClicked="#viewCompletedGoals" prefHeight="54.0" prefWidth="264.0" style="-fx-background-color: #EBEBEB; -fx-border-color: linear-gradient(to bottom, #8BC1E7, #D4E8F6); -fx-border-width: 6;" text="View Completed Goals">
                      <font>
                         <Font size="19.0" />
                      </font>

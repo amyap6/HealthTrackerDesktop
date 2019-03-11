@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="440.0" prefWidth="325.0" style="-fx-background-color: linear-gradient(to bottom, #fdc830, #f37335);" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ViewCompletedGoalsController">
+    <children>
+        <HBox layoutY="115.0" prefHeight="325.0" prefWidth="325.0" style="-fx-background-color: white;">
+            <children>
+                <VBox prefHeight="196.0" prefWidth="325.0">
+                    <children>
+                        <ListView fx:id="completedGoals" prefHeight="280.0" prefWidth="200.0" style="-fx-border-width: 6; -fx-border-color: linear-gradient(to bottom, #8BC1E7, #D4E8F6); -fx-background-color: #EBEBEB;">
+                            <VBox.margin>
+                                <Insets bottom="20.0" left="20.0" right="20.0" top="30.0" />
+                            </VBox.margin>
+                        </ListView>
+                    </children></VBox>
+            </children></HBox>
+        <HBox fx:id="topBar" alignment="CENTER_RIGHT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="325.0" style="-fx-background-color: rgba(255,255,255,0.25);">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#minimise" prefHeight="30.0" prefWidth="30.0" styleClass="topButton">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="MINUS" styleClass="topGlyph" translateY="1.0" />
+                    </graphic>
+                </Label>
+                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#close" prefHeight="30.0" prefWidth="30.0" styleClass="topButton">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="CLOSE" styleClass="topGlyph" />
+                    </graphic>
+                </Label>
+            </children>
+        </HBox>
+        <Label fx:id="username" layoutX="69.0" layoutY="47.0" prefHeight="48.0" prefWidth="201.0" text="Completed Goals" textAlignment="CENTER">
+            <font>
+                <Font size="25.0" />
+            </font></Label>
+    </children>
+</AnchorPane>

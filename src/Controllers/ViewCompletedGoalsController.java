@@ -6,20 +6,17 @@ import application.Launch;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class viewCustomFoodsController implements Initializable {
+public class ViewCompletedGoalsController implements Initializable {
 
-    public ListView customFoods;
-    public Label username;
+    public ListView completedGoals;
     public HBox topBar;
 
     @Override
@@ -30,13 +27,13 @@ public class viewCustomFoodsController implements Initializable {
 
         DBAccess.getConnection();
 
-        ArrayList<String> foods = DBAdd.getFoods
-                    ("Custom", Launch.getCurrentUser().getUserName());
+        ArrayList<String> goals;
+        //need to access past goals from the database
 
         DBAccess.closeConnection();
 
-        items.addAll(foods);
-        customFoods.setItems(items);
+        //items.addAll(goals);
+        completedGoals.setItems(items);
 
     }
 
@@ -47,6 +44,8 @@ public class viewCustomFoodsController implements Initializable {
     public void close(MouseEvent mouseEvent) {
         Launch.stage.close();
         Launch.stage = Launch.primary;
+
     }
 
 }
+
