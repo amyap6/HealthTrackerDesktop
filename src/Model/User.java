@@ -12,9 +12,38 @@ public class User extends Profile {
     private double weight;
     private double activityLevel;
     private int bmi;
+    private int idealWeight;
     private int age;
     private LocalDate dob;
     private ArrayList<Goal> goals;
+    private int fat;
+
+    public int getFat() {
+        return fat;
+    }
+
+    public void setFat(int fat) {
+        this.fat = fat;
+    }
+
+    public int getProtein() {
+        return protein;
+    }
+
+    public void setProtein(int protein) {
+        this.protein = protein;
+    }
+
+    public int getCarbs() {
+        return carbs;
+    }
+
+    public void setCarbs(int carbs) {
+        this.carbs = carbs;
+    }
+
+    private int protein;
+    private int carbs;
 
     public User(String userName) {
         this.userName = userName;
@@ -61,6 +90,16 @@ public class User extends Profile {
         this.dob = birth;
         this.age = Period.between(birth, LocalDate.now()).getYears();
     }
+
+
+    public int getIdealWeight() {
+        return idealWeight;
+    }
+
+    public void setIdealWeight(int idealWeight) {
+        this.idealWeight = idealWeight;
+    }
+
 
     public String getUserName(){
         return userName;

@@ -1,26 +1,29 @@
 package Controllers;
 
+import DBClasses.DBRemoval;
 import application.Launch;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class SettingsController implements Initializable {
+public class SettingsController implements Initializable{
 
     public HBox topBar;
 
-    
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Launch.makeStageDraggable(topBar);
+
     }
 
     public void minimise(MouseEvent mouseEvent) {
@@ -57,41 +60,87 @@ public class SettingsController implements Initializable {
     }
 
     public void logOut(MouseEvent mouseEvent) throws IOException {
-        //log out this user and return to launch view
+        Parent root = FXMLLoader.load(getClass().getResource("/View/login.fxml"));
+        Launch.stage.close();
+        if (Launch.stage != Launch.primary) {
+            Launch.stage = Launch.primary;
+            Launch.stage.close();
+        }
+        Launch.newWindow(root, new Stage());
+        Launch.primary = Launch.stage;
     }
 
     public void viewAccountDetails(MouseEvent mouseEvent) throws IOException {
-        //view this user's name, username, sex, height, weight, date of birth, current goals
-        //in popup window
+        if (Launch.stage == Launch.primary){
+            Parent root = FXMLLoader.load(getClass().getResource("/View/viewAccountDetails.fxml"));
+
+            Launch.newWindow(root, new Stage());
+            Launch.stage.setAlwaysOnTop(true);
+        }
     }
 
     public void changePassword(MouseEvent mouseEvent) throws IOException {
-        //pop-up window with new password setter
+        if (Launch.stage == Launch.primary){
+            Parent root = FXMLLoader.load(getClass().getResource("/View/changePassword.fxml"));
+
+            Launch.newWindow(root, new Stage());
+            Launch.stage.setAlwaysOnTop(true);
+        }
     }
 
     public void viewHealthData(MouseEvent mouseEvent) throws IOException {
-        //pop-up window, view this user's bmi, ideal weight, target calories, target fat, carbs and protein
+        if (Launch.stage == Launch.primary){
+            Parent root = FXMLLoader.load(getClass().getResource("/View/viewHealthData.fxml"));
+
+            Launch.newWindow(root, new Stage());
+            Launch.stage.setAlwaysOnTop(true);
+        }
     }
 
     public void deleteAccount(MouseEvent mouseEvent) throws IOException {
-        //delete this user from database
-        //maybe pop-up window to ask are you sure
+        DBRemoval.removeUser(Launch.getCurrentUser());
     }
 
     public void viewCustomFoods(MouseEvent mouseEvent) throws IOException {
-        //pop-up window to view users custom foods
+        if (Launch.stage == Launch.primary){
+            Parent root = FXMLLoader.load(getClass().getResource("/View/viewCustomFoods.fxml"));
+
+            Launch.newWindow(root, new Stage());
+            Launch.stage.setAlwaysOnTop(true);
+        }
     }
 
     public void clearCustomFoods(MouseEvent mouseEvent) throws IOException {
-        //pop-up window, are you sure you want to clear your custom foods, then remove from database
+        //maybe add pop-up window asking are you sure
+        DBClasses.DBAccess.getConnection();
+        try {
+            DBClasses.DBAccess.st.executeUpdate("DELETE FROM FOODS WHERE USERNAME = '"+ Launch.getCurrentUser().getUserName()+"'");
+            System.out.println("All custom foods for user: "+ Launch.getCurrentUser().getUserName()+" removed!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        DBClasses.DBAccess.closeConnection();
     }
 
     public void viewCustomExercises(MouseEvent mouseEvent) throws IOException {
-        //pop-up window to view users custom exercises
+        if (Launch.stage == Launch.primary){
+            Parent root = FXMLLoader.load(getClass().getResource("/View/viewCustomExercises.fxml"));
+
+            Launch.newWindow(root, new Stage());
+            Launch.stage.setAlwaysOnTop(true);
+        }
     }
 
     public void clearCustomExercises(MouseEvent mouseEvent) throws IOException {
-        //pop-up window, are you sure you want to clear your custom exercises, then remove from database
+        //maybe add pop-up window asking are you sure
+        DBClasses.DBAccess.getConnection();
+        try {
+            DBClasses.DBAccess.st.executeUpdate("DELETE FROM EXERCISE WHERE USERNAME = '"+ Launch.getCurrentUser().getUserName()+"'");
+            System.out.println("All goals for user: "+ Launch.getCurrentUser().getUserName()+" removed!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        DBClasses.DBAccess.closeConnection();
     }
 
 

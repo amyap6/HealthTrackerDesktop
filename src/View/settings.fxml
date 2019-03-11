@@ -146,21 +146,21 @@
                      <font>
                         <Font size="19.0" />
                      </font></Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#viewAccountDetails" prefHeight="53.0" prefWidth="264.0" style="-fx-background-color: #EBEBEB; -fx-border-width: 6; -fx-border-color: linear-gradient(to bottom, #8BC1E7, #D4E8F6);" text="View Account Details">
-                     <font>
-                        <Font size="19.0" />
-                     </font></Button>
                   <Button mnemonicParsing="false" onMouseClicked="#changePassword" prefHeight="54.0" prefWidth="264.0" style="-fx-background-color: #EBEBEB; -fx-border-color: linear-gradient(to bottom, #8BC1E7, #D4E8F6); -fx-border-width: 6;" text="Change Password">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#viewHealthData" prefHeight="54.0" prefWidth="264.0" style="-fx-background-color: #EBEBEB; -fx-border-color: linear-gradient(to bottom, #8BC1E7, #D4E8F6); -fx-border-width: 6;" text="View Health Data">
+                  <Button mnemonicParsing="false" onMouseClicked="#deleteAccount" prefHeight="54.0" prefWidth="264.0" style="-fx-background-color: #EBEBEB; -fx-border-color: linear-gradient(to bottom, #8BC1E7, #D4E8F6); -fx-border-width: 6;" text="Delete Account">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" onMouseClicked="#deleteAccount" prefHeight="54.0" prefWidth="264.0" style="-fx-background-color: #EBEBEB; -fx-border-color: linear-gradient(to bottom, #8BC1E7, #D4E8F6); -fx-border-width: 6;" text="Delete Account">
+                  <Button mnemonicParsing="false" onMouseClicked="#viewAccountDetails" prefHeight="53.0" prefWidth="264.0" style="-fx-background-color: #EBEBEB; -fx-border-width: 6; -fx-border-color: linear-gradient(to bottom, #8BC1E7, #D4E8F6);" text="View Account Details">
+                     <font>
+                        <Font size="19.0" />
+                     </font></Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#viewHealthData" prefHeight="54.0" prefWidth="264.0" style="-fx-background-color: #EBEBEB; -fx-border-color: linear-gradient(to bottom, #8BC1E7, #D4E8F6); -fx-border-width: 6;" text="View Health Data">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -192,7 +192,7 @@
                         <Font size="19.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="264.0" style="-fx-background-color: #EBEBEB; -fx-border-color: linear-gradient(to bottom, #8BC1E7, #D4E8F6); -fx-border-width: 6;">
+                  <Button mnemonicParsing="false" prefHeight="54.0" prefWidth="264.0" style="-fx-background-color: #EBEBEB; -fx-border-color: linear-gradient(to bottom, #8BC1E7, #D4E8F6); -fx-border-width: 6;" text="View Completed Goals">
                      <font>
                         <Font size="19.0" />
                      </font>

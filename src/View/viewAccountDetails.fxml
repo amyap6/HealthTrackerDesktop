@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="440.0" prefWidth="325.0" style="-fx-background-color: linear-gradient(to bottom, #fdc830, #f37335);" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.viewAccountDetailsController">
+   <children>
+      <HBox layoutY="115.0" prefHeight="325.0" prefWidth="325.0" style="-fx-background-color: white;">
+         <children>
+            <VBox layoutY="115.0" prefHeight="325.0" prefWidth="167.0">
+               <children>
+                  <Label prefHeight="45.0" prefWidth="94.0" text="Name:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets left="30.0" top="20.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin></Label>
+                  <Label text="Height:">
+                     <padding>
+                        <Insets left="30.0" top="20.0" />
+                     </padding>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label text="Weight:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="30.0" top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label text="Age:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets left="30.0" top="20.0" />
+                     </padding>
+                  </Label>
+                  <Label text="Current Goals:">
+                     <padding>
+                        <Insets left="30.0" top="20.0" />
+                     </padding>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
+            <VBox prefHeight="325.0" prefWidth="218.0">
+               <children>
+                  <Label fx:id="name">
+                     <padding>
+                        <Insets left="30.0" top="20.0" />
+                     </padding>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="height">
+                     <padding>
+                        <Insets left="30.0" top="20.0" />
+                     </padding>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="weight">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets left="30.0" top="20.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="age">
+                     <padding>
+                        <Insets left="30.0" top="20.0" />
+                     </padding>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="goals">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets left="30.0" top="20.0" />
+                     </padding>
+                  </Label>
+               </children>
+            </VBox>
+         </children></HBox>
+       <HBox fx:id="topBar" alignment="CENTER_RIGHT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="325.0" style="-fx-background-color: rgba(255,255,255,0.25);">
+           <children>
+               <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#minimise" prefHeight="30.0" prefWidth="30.0" styleClass="topButton">
+                   <graphic>
+                       <FontAwesomeIconView glyphName="MINUS" styleClass="topGlyph" translateY="1.0" />
+                   </graphic>
+               </Label>
+               <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#close" prefHeight="30.0" prefWidth="30.0" styleClass="topButton">
+                   <graphic>
+                       <FontAwesomeIconView glyphName="CLOSE" styleClass="topGlyph" />
+                   </graphic>
+               </Label>
+           </children>
+       </HBox>
+      <Label fx:id="username" layoutX="105.0" layoutY="47.0" prefHeight="48.0" prefWidth="112.0" textAlignment="CENTER">
+         <font>
+            <Font size="25.0" />
+         </font></Label>
+   </children>
+</AnchorPane>

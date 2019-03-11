@@ -17,13 +17,13 @@ public abstract class DBAccess {
     static final String PW = "password";
 
     static Connection conn = null;
-    static Statement st = null;
+    public static Statement st = null;
 
     /**
      * Initialises Connection and Statement classes
      * @return void
      */
-    protected static void getConnection(){
+    public static void getConnection(){
         try {
             Class.forName(JDBC_DRIVER);
             conn = DriverManager.getConnection(DB_URL, UN, PW);
@@ -37,7 +37,7 @@ public abstract class DBAccess {
      * Calls .close() on both the Connection and Statement
      * @return void
      */
-    protected static void closeConnection(){
+    public static void closeConnection(){
         try {
             conn.close();
             st.close();
