@@ -382,6 +382,16 @@ public final class DBAdd extends DBAccess{
         return false;
     }
 
+    public static void updatePassword(String username, String password) {
+        getConnection();
+        try {
+            st.executeUpdate("UPDATE PROFILE SET PASSWORD = '"+password+"' WHERE USERNAME = '"+username+"'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        closeConnection();
+    }
+
 
     public static void main(String[] args) {
         //System.out.println(new Date(119,2,3));
