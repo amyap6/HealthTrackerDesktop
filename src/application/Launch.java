@@ -60,6 +60,13 @@ public class Launch extends Application {
         stage.show();
     }
 
+    public static void mainCheck() {
+        if (primary != stage) {
+            stage.close();
+            stage = primary;
+        }
+    }
+
     public static void setCurrentUser(User u) {
         currentUser = u;
     }

@@ -204,16 +204,6 @@ public final class DBAdd extends DBAccess{
      * Adds custom given exercise to database belonging to particular user
      * @param ex
      */
-    public static void addCustomExercise(Exercise ex){
-        getConnection();
-        try {
-            st.executeUpdate("INSERT INTO EXERCISE VALUES ('"+ex.getName()+"', '"
-                    +ex.getType().name()+"', "+ex.getCalPerMin()+", '"+ex.getUsername()+"')");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        closeConnection();
-    }
 
     /**
      * Return all exercises of given Exercise.Type belonging to given User
@@ -386,6 +376,17 @@ public final class DBAdd extends DBAccess{
         getConnection();
         try {
             st.executeUpdate("UPDATE PROFILE SET PASSWORD = '"+password+"' WHERE USERNAME = '"+username+"'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        closeConnection();
+    }
+
+    public static void addCustomExercise(String name, Exercise.Type type, int dur, int cal, User user) {
+        double calPerMin = (double)cal/user.getWeight()/dur/2.205;
+        getConnection();
+        try {
+            st.executeUpdate("INSERT INTO EXERCISE VALUES ('"+name+"','"+type+"',"+calPerMin+",'"+user.getUserName()+"')");
         } catch (SQLException e) {
             e.printStackTrace();
         }

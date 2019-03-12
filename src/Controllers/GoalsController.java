@@ -103,26 +103,31 @@ public class GoalsController implements Initializable {
     }
 
     public void toDailyLog(MouseEvent mouseEvent) throws IOException {
+        Launch.mainCheck();
         Parent root = FXMLLoader.load(getClass().getResource("/View/dailyLog.fxml"));
         Launch.stage.getScene().setRoot(root);
     }
 
     public void toGoals(MouseEvent mouseEvent) throws IOException {
+        Launch.mainCheck();
         Parent root = FXMLLoader.load(getClass().getResource("/View/goals.fxml"));
         Launch.stage.getScene().setRoot(root);
     }
 
     public void toHome(MouseEvent mouseEvent) throws IOException {
+        Launch.mainCheck();
         Parent root = FXMLLoader.load(getClass().getResource("/View/home.fxml"));
         Launch.stage.getScene().setRoot(root);
     }
 
     public void toGroups(MouseEvent mouseEvent) throws IOException {
+        Launch.mainCheck();
         Parent root = FXMLLoader.load(getClass().getResource("/View/groups.fxml"));
         Launch.stage.getScene().setRoot(root);
     }
 
     public void toSettings(MouseEvent mouseEvent) throws IOException {
+        Launch.mainCheck();
         Parent root = FXMLLoader.load(getClass().getResource("/View/settings.fxml"));
         Launch.stage.getScene().setRoot(root);
     }

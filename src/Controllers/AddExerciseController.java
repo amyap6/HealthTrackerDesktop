@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -51,8 +52,11 @@ public class AddExerciseController implements Initializable {
     }
 
     public void addCustom(MouseEvent mouseEvent) throws IOException {
+        Launch.stage.close();
+        Launch.stage = Launch.primary;
         Parent root = FXMLLoader.load(getClass().getResource("/View/addCustomExercise.fxml"));
-        Launch.stage.getScene().setRoot(root);
+        Launch.newWindow(root, new Stage());
+        Launch.stage.setAlwaysOnTop(true);
     }
 
     public void submit(MouseEvent mouseEvent) throws IOException {
