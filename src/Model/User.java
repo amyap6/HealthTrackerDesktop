@@ -7,6 +7,7 @@ import java.util.ArrayList;
 public class User extends Profile {
 
     private String userName;
+    private String password;
     private int sex;           // Male = 0, Female = 1
     private int height;
     private double weight;
@@ -17,31 +18,6 @@ public class User extends Profile {
     private LocalDate dob;
     private ArrayList<Goal> goals;
     private int fat;
-
-    public int getFat() {
-        return fat;
-    }
-
-    public void setFat(int fat) {
-        this.fat = fat;
-    }
-
-    public int getProtein() {
-        return protein;
-    }
-
-    public void setProtein(int protein) {
-        this.protein = protein;
-    }
-
-    public int getCarbs() {
-        return carbs;
-    }
-
-    public void setCarbs(int carbs) {
-        this.carbs = carbs;
-    }
-
     private int protein;
     private int carbs;
 
@@ -91,6 +67,15 @@ public class User extends Profile {
         this.age = Period.between(birth, LocalDate.now()).getYears();
     }
 
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public int getIdealWeight() {
         return idealWeight;
@@ -128,6 +113,32 @@ public class User extends Profile {
     public int getAge() {
         return age;
     }
+
+
+    public int getFat() {
+        return fat;
+    }
+
+    public void setFat(int fat) {
+        this.fat = fat;
+    }
+
+    public int getProtein() {
+        return protein;
+    }
+
+    public void setProtein(int protein) {
+        this.protein = protein;
+    }
+
+    public int getCarbs() {
+        return carbs;
+    }
+
+    public void setCarbs(int carbs) {
+        this.carbs = carbs;
+    }
+
 
     public int getAllowedCalories() {
         double metaRate = Calculator.metabolicRate(getWeight(), getHeight(), getAge());
