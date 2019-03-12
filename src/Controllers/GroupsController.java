@@ -2,10 +2,12 @@ package Controllers;
 
 import DBClasses.DBAdd;
 import DBClasses.LoadUser;
+import Model.Exercise;
 import Model.Group;
 import Model.Message;
 import Model.User;
 import application.Launch;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -18,6 +20,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,37 +34,41 @@ public class GroupsController implements Initializable {
     public ScrollPane scrollPane;
     public TextField message;
     public ScrollPane messageDisplay;
+    public HBox bottomBar;
+    public Label addMembers;
 
-    private Group current;
+    private static Group longevity = new Group("Longevity", null);
+    public static Group current = null;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Launch.makeStageDraggable(topBar);
 
-        ArrayList<User> users = new ArrayList<>();
-        users.add(Launch.getCurrentUser());
+        ArrayList<Group> groups = new ArrayList<>();
+        groups.addAll(DBAdd.getGroups(Launch.getCurrentUser().getUserName()));
+        groups.add(longevity);
 
-        current = new Group(users,"Test");
+        if (groups.size() == 1) {
+            current = longevity;
+        } else if (current == null) {
+            current = groups.get(0);
+        }
 
         ArrayList<Message> messages = DBAdd.getMessages(current.getGroupName());
+
+        if (current.getGroupName().equals("Longevity")) {
+            bottomBar.setDisable(true);
+            addMembers.setDisable(true);
+        } else {
+            bottomBar.setDisable(false);
+            addMembers.setDisable(false);
+        }
 
         VBox v = new VBox();
         v.getChildren().clear();
         v.setFillWidth(true);
-        for (int i = 0; i < 1; i++) {
-            VBox temp = new VBox();
-            Label a = new Label(current.getGroupName());
-            a.getStyleClass().add("groupName");
-            Label b;
-            if (messages.size() > 0) {
-                b = new Label(messages.get(messages.size() - 1).getMessage());
-            } else {
-                b = new Label("");
-            }
-            b.getStyleClass().add("groupInfo");
-            temp.getStyleClass().add("groupBox");
-            temp.getChildren().add(a);
-            temp.getChildren().add(b);
+        for (int i = 0; i < groups.size(); i++) {
+            VBox temp = sideBarCreate(groups.get(i));
             v.getChildren().add(temp);
         }
         scrollPane.setContent(v);
@@ -93,13 +101,22 @@ public class GroupsController implements Initializable {
             } else {
                 message.setStyle("-fx-padding: 3px 5px 0px 15px");
             }
-            message.getChildren().add(b);
+            if (!messs.equals("USER ADDED")) message.getChildren().add(b);
             wrap.getChildren().add(message);
             if (!mess.getUser().equals(Launch.getCurrentUser().getUserName())) {
                 b.getStyleClass().clear();
                 b.getStyleClass().add("messageOther");
                 wrap.setAlignment(Pos.TOP_RIGHT);
                 message.setAlignment(Pos.TOP_RIGHT);
+            }
+            if (messs.equals("USER ADDED")) {
+                b.setText("New user added!");
+                wrap.getStyleClass().clear();
+                wrap.setAlignment(Pos.CENTER);
+                message.setAlignment(Pos.CENTER);
+                a.setText("+ " + mess.getName() + " was added to the group");
+                a.getStyleClass().clear();
+                a.getStyleClass().add("messageAdded");
             }
             messageView.getChildren().add(wrap);
         }
@@ -158,7 +175,55 @@ public class GroupsController implements Initializable {
         Launch.stage.getScene().setRoot(root);
     }
 
+    private VBox sideBarCreate(Group g) {
+        VBox temp = new VBox();
+        temp.setOnMouseClicked(e -> {
+            current = g;
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/View/groups.fxml"));
+                Launch.stage.getScene().setRoot(root);
+            } catch (IOException error) {
+                error.printStackTrace();
+            }
+        });
+        Label a = new Label(g.getGroupName());
+        a.getStyleClass().add("groupName");
+        Label b;
+        ArrayList<Message> tempMessages = DBAdd.getMessages(g.getGroupName());
+        if (tempMessages.size() > 0) {
+            b = new Label(tempMessages.get(tempMessages.size() - 1).getMessage());
+        } else {
+            b = new Label("");
+        }
+        b.getStyleClass().add("groupInfo");
+        if (current.getGroupName().equals(g.getGroupName())) {
+            temp.getStyleClass().add("groupBoxSelected");
+        } else {
+            temp.getStyleClass().add("groupBox");
+        }
+        temp.getChildren().add(a);
+        temp.getChildren().add(b);
+
+        return temp;
+    }
+
     public void sendClicked(MouseEvent mouseEvent) throws IOException {
         send();
+    }
+
+    public void createGroup(MouseEvent mouseEvent) throws IOException {
+        if (Launch.stage == Launch.primary) {
+            Parent root = FXMLLoader.load(getClass().getResource("/View/createGroup.fxml"));
+            Launch.newWindow(root, new Stage());
+            Launch.stage.setAlwaysOnTop(true);
+        }
+    }
+
+    public void addMembers(MouseEvent mouseEvent) throws IOException {
+        if (Launch.stage == Launch.primary) {
+            Parent root = FXMLLoader.load(getClass().getResource("/View/addToGroup.fxml"));
+            Launch.newWindow(root, new Stage());
+            Launch.stage.setAlwaysOnTop(true);
+        }
     }
 }

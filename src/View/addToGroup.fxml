@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="325.0" style="-fx-background-color: linear-gradient(to bottom, #fdc830, #f37335);" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AddToGroupController">
+    <children>
+        <HBox fx:id="topBar" alignment="CENTER_RIGHT" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="325.0" style="-fx-background-color: rgba(255,255,255,0.25);">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#minimise" prefHeight="30.0" prefWidth="30.0" styleClass="topButton">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="MINUS" styleClass="topGlyph" translateY="1.0" />
+                    </graphic>
+                </Label>
+                <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#close" prefHeight="30.0" prefWidth="30.0" styleClass="topButton">
+                    <graphic>
+                        <FontAwesomeIconView glyphName="CLOSE" styleClass="topGlyph" />
+                    </graphic>
+                </Label>
+            </children>
+        </HBox>
+        <Label alignment="CENTER" layoutY="54.0" prefWidth="325.0" style="-fx-font-size: 30;" text="Add Member" textFill="WHITE" />
+      <HBox layoutY="115.0" prefHeight="135.0" prefWidth="325.0" style="-fx-background-color: white;" />
+      <HBox layoutY="115.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="135.0" prefWidth="325.0" spacing="13.0">
+               <children>
+                  <TextField fx:id="userName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="250.0" promptText="Username" styleClass="registerField" />
+                  <Button mnemonicParsing="false" onMouseClicked="#submit" prefHeight="30.0" prefWidth="250.0" styleClass="submitButton" text="Submit" />
+                  <Label fx:id="validationText" alignment="CENTER" contentDisplay="CENTER" prefWidth="650.0" textAlignment="CENTER" textFill="RED">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets top="30.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+    </children>
+</AnchorPane>

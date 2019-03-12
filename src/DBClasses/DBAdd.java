@@ -273,12 +273,15 @@ public final class DBAdd extends DBAccess{
     public static void addMesage(String user, Group group, String message) {
         java.util.Date date = new java.util.Date();
         Timestamp now = new Timestamp(date.getTime());
-        getConnection();
-        try {
-            st.executeUpdate("INSERT INTO MESSAGES VALUES ('"+user+"','"+group.getGroupName()+"','"
-                    +message+"','"+now+"')");
-        } catch (SQLException e) {
-            e.printStackTrace();
+        if (!group.getGroupName().equals("Longevity")) {
+            getConnection();
+            try {
+                st.executeUpdate("INSERT INTO MESSAGES VALUES ('" + user + "','" + group.getGroupName() + "','"
+                        + message + "','" + now + "')");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            closeConnection();
         }
     }
 
@@ -292,24 +295,93 @@ public final class DBAdd extends DBAccess{
         ResultSet rs = null;
         String user, name, message;
 
+        if (!groupID.equals("Longevity")) {
+            getConnection();
+            try {
+                rs = st.executeQuery("SELECT PROFILE.USERNAME, PROFILE.FIRSTNAME, PROFILE.SURNAME, MESSAGES.MESSAGE " +
+                        "FROM MESSAGES JOIN PROFILE ON MESSAGES.USERNAME = PROFILE.USERNAME WHERE GROUPID = '" + groupID +
+                        "' ORDER BY MESSAGES.DATE");
+                while (rs.next()) {
+                    user = rs.getString(1);
+                    name = rs.getString(2) + " " + rs.getString(3);
+                    message = rs.getString(4);
+                    messages.add(new Message(user, name, message));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            closeConnection();
+        } else {
+            messages.add(new Message("Longevity", "Team Longevity", "Welcome to Groups!"));
+            messages.add(new Message("Longevity", "Team Longevity", "Use the side panel to create " +
+                    "new groups and add your friends."));
+            messages.add(new Message("Longevity", "Team Longevity", "Here you can share a group " +
+                    "goal and discuss your progress."));
+            messages.add(new Message("Longevity", "Team Longevity", "Good Luck!"));
+            messages.add(new Message("Longevity", "Team Longevity", "Team Longevity"));
+        }
+
+        return messages;
+    }
+
+    public static ArrayList<Group> getGroups(String user) {
+        ArrayList<Group> groups = new ArrayList<>();
+        ResultSet rs = null;
+
         getConnection();
         try {
-            rs = st.executeQuery("SELECT PROFILE.USERNAME, PROFILE.FIRSTNAME, PROFILE.SURNAME, MESSAGES.MESSAGE " +
-                    "FROM MESSAGES JOIN PROFILE ON MESSAGES.USERNAME = PROFILE.USERNAME WHERE GROUPID = '" +groupID+
-                    "' ORDER BY MESSAGES.DATE");
+            rs = st.executeQuery("(SELECT GROUPMEMBERS.USERNAME, GROUPMEMBERS.GROUPID FROM GROUPMEMBERS " +
+                            "WHERE GROUPMEMBERS.USERNAME = '"+user+"') INTERSECT " +
+                    "(SELECT GROUPMEMBERS.USERNAME, GROUPMEMBERS.GROUPID FROM GROUPMEMBERS " +
+                    "JOIN MESSAGES ON GROUPMEMBERS.GROUPID = MESSAGES.GROUPID " +
+                    "WHERE GROUPMEMBERS.USERNAME = '"+user+"' ORDER BY MESSAGES.DATE DESC)");
             while (rs.next()) {
-                user = rs.getString(1);
-                name = rs.getString(2) + " " + rs.getString(3);
-                message = rs.getString(4);
-                messages.add(new Message(user,name,message));
+                groups.add(new Group(rs.getString(2), null));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         closeConnection();
 
-        return messages;
+        return groups;
     }
+
+    public static Boolean addGroup(String user, String groupID) {
+        ResultSet rs = null;
+
+        getConnection();
+        try {
+            rs = st.executeQuery("SELECT * FROM GROUPMEMBERS WHERE GROUPID = '"+groupID+"'");
+            if (!rs.next()) {
+                st.executeUpdate("INSERT INTO GROUPMEMBERS VALUES ('"+groupID+"', '"+user+"')");
+                String welcome = "Welcome to your new group. Use the side bar to add new members!";
+                addMesage("Longevity", new Group(groupID, null), welcome);
+                return true;
+            }
+        } catch (SQLException e) {
+
+        }
+        closeConnection();
+        return false;
+    }
+
+    public static Boolean addMember(String user, String groupID) {
+        ResultSet rs = null;
+
+        getConnection();
+        try {
+            rs = st.executeQuery("SELECT * FROM USER WHERE USERNAME = '"+user+"'");
+            if (rs.next()) {
+                st.executeUpdate("INSERT INTO GROUPMEMBERS VALUES ('"+groupID+"', '"+user+"')");
+                return true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        closeConnection();
+        return false;
+    }
+
 
     public static void main(String[] args) {
         //System.out.println(new Date(119,2,3));

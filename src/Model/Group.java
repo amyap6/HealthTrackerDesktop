@@ -1,5 +1,7 @@
 package Model;
 
+import application.Launch;
+
 import java.io.IOException;
 import java.util.*;
 import javax.mail.*;
@@ -21,6 +23,13 @@ public class Group {
         this.members = members;
         this.groupGoal = null;
         this.groupName = groupName;
+    }
+
+    public Group(String groupName, Goal groupGoal) {
+        this.groupName = groupName;
+        this.members = new ArrayList<>();
+        this.members.add(Launch.getCurrentUser());
+        this.groupGoal = groupGoal;
     }
 
     public ArrayList<User> getMembers() {
@@ -53,7 +62,7 @@ public class Group {
         this.groupName = groupName;
     }
 
-    public void joinGroup(User user){
+    public void addUser(User user){
         this.members.add(user);
     }
 
@@ -181,7 +190,7 @@ public class Group {
         mem.add(tom);
 
         Group group = new Group(mem, groupGoal, "Group 1");
-        group.joinGroup(jamie);
+        //group.joinGroup(jamie);
         group.deleteMembership(jamie);
 
         //can't send all these at the same time so one is commented out

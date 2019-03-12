@@ -17,264 +17,286 @@
     <table id="6" parent="4" name="EXERCISE"/>
     <table id="7" parent="4" name="FOODS"/>
     <table id="8" parent="4" name="GOALS"/>
-    <table id="9" parent="4" name="MESSAGES"/>
-    <table id="10" parent="4" name="PROFILE"/>
-    <table id="11" parent="4" name="USER"/>
-    <column id="12" parent="5" name="USERNAME">
+    <table id="9" parent="4" name="GROUPMEMBERS"/>
+    <table id="10" parent="4" name="MESSAGES"/>
+    <table id="11" parent="4" name="PROFILE"/>
+    <table id="12" parent="4" name="USER"/>
+    <column id="13" parent="5" name="USERNAME">
       <Position>1</Position>
       <DataType>VARCHAR(20)|12s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="13" parent="5" name="DATE">
+    <column id="14" parent="5" name="DATE">
       <Position>2</Position>
       <DataType>DATE(8)|91s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="14" parent="5" name="KCALS">
+    <column id="15" parent="5" name="KCALS">
       <Position>3</Position>
       <DataType>INTEGER(10)|4s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="15" parent="5" name="MEAL">
+    <column id="16" parent="5" name="MEAL">
       <Position>4</Position>
       <DataType>VARCHAR(10)|12s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="16" parent="5" name="CONSTRAINT_CC_INDEX_4">
+    <index id="17" parent="5" name="CONSTRAINT_CC_INDEX_4">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>USERNAME</ColNames>
     </index>
-    <foreign-key id="17" parent="5" name="CONSTRAINT_CC">
+    <foreign-key id="18" parent="5" name="CONSTRAINT_CC">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>USERNAME</ColNames>
       <RefTableName>PROFILE</RefTableName>
       <RefKeyName>CONSTRAINT_1</RefKeyName>
       <RefColNames>USERNAME</RefColNames>
     </foreign-key>
-    <column id="18" parent="6" name="NAME">
+    <column id="19" parent="6" name="NAME">
       <Position>1</Position>
       <DataType>VARCHAR(20)|12s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="19" parent="6" name="TYPE">
+    <column id="20" parent="6" name="TYPE">
       <Position>2</Position>
       <DataType>VARCHAR(10)|12s</DataType>
     </column>
-    <column id="20" parent="6" name="CALPERMIN">
+    <column id="21" parent="6" name="CALPERMIN">
       <Position>3</Position>
       <DataType>DOUBLE(17)|8s</DataType>
     </column>
-    <column id="21" parent="6" name="USERNAME">
+    <column id="22" parent="6" name="USERNAME">
       <Position>4</Position>
       <DataType>VARCHAR(30)|12s</DataType>
     </column>
-    <index id="22" parent="6" name="PRIMARY_KEY_A">
+    <index id="23" parent="6" name="PRIMARY_KEY_A">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>NAME</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="23" parent="6" name="CONSTRAINT_A">
+    <key id="24" parent="6" name="CONSTRAINT_A">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>NAME</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="24" parent="7" name="NAME">
+    <column id="25" parent="7" name="NAME">
       <Position>1</Position>
       <DataType>VARCHAR(30)|12s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="25" parent="7" name="KCALS">
+    <column id="26" parent="7" name="KCALS">
       <Position>2</Position>
       <DataType>INTEGER(10)|4s</DataType>
     </column>
-    <column id="26" parent="7" name="PROTEIN">
+    <column id="27" parent="7" name="PROTEIN">
       <Position>3</Position>
       <DataType>INTEGER(10)|4s</DataType>
     </column>
-    <column id="27" parent="7" name="CARBS">
+    <column id="28" parent="7" name="CARBS">
       <Position>4</Position>
       <DataType>INTEGER(10)|4s</DataType>
     </column>
-    <column id="28" parent="7" name="FAT">
+    <column id="29" parent="7" name="FAT">
       <Position>5</Position>
       <DataType>INTEGER(10)|4s</DataType>
     </column>
-    <column id="29" parent="7" name="CATEGORY">
+    <column id="30" parent="7" name="CATEGORY">
       <Position>6</Position>
       <DataType>VARCHAR(20)|12s</DataType>
     </column>
-    <column id="30" parent="7" name="USERNAME">
+    <column id="31" parent="7" name="USERNAME">
       <Position>7</Position>
       <DataType>VARCHAR(30)|12s</DataType>
     </column>
-    <index id="31" parent="7" name="PRIMARY_KEY_9">
+    <index id="32" parent="7" name="PRIMARY_KEY_9">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>NAME</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="32" parent="7" name="CONSTRAINT_3">
+    <key id="33" parent="7" name="CONSTRAINT_3">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>NAME</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="33" parent="8" name="ID">
+    <column id="34" parent="8" name="ID">
       <Position>1</Position>
       <DataType>VARCHAR(20)|12s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="34" parent="8" name="TARGETWEIGHTLOSS">
+    <column id="35" parent="8" name="TARGETWEIGHTLOSS">
       <Position>2</Position>
       <DataType>DOUBLE(17)|8s</DataType>
     </column>
-    <column id="35" parent="8" name="TARGETDATE">
+    <column id="36" parent="8" name="TARGETDATE">
       <Position>3</Position>
       <DataType>DATE(8)|91s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="36" parent="8" name="COMPLETED">
+    <column id="37" parent="8" name="COMPLETED">
       <Position>4</Position>
       <DataType>BOOLEAN|16s</DataType>
     </column>
-    <column id="37" parent="8" name="ACTIVE">
+    <column id="38" parent="8" name="ACTIVE">
       <Position>5</Position>
       <DataType>BOOLEAN|16s</DataType>
     </column>
-    <column id="38" parent="8" name="STARTDAYS">
+    <column id="39" parent="8" name="STARTDAYS">
       <Position>6</Position>
       <DataType>INTEGER(10)|4s</DataType>
     </column>
-    <column id="39" parent="8" name="WEIGHTLOSSPROGRESS">
+    <column id="40" parent="8" name="WEIGHTLOSSPROGRESS">
       <Position>7</Position>
       <DataType>DOUBLE(17)|8s</DataType>
     </column>
-    <column id="40" parent="8" name="PERCENTLOST">
+    <column id="41" parent="8" name="PERCENTLOST">
       <Position>8</Position>
       <DataType>DOUBLE(17)|8s</DataType>
     </column>
-    <column id="41" parent="8" name="STARTWEIGHT">
+    <column id="42" parent="8" name="STARTWEIGHT">
       <Position>9</Position>
       <DataType>DOUBLE(17)|8s</DataType>
     </column>
-    <index id="42" parent="8" name="PRIMARY_KEY_B0">
+    <index id="43" parent="8" name="PRIMARY_KEY_B0">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID
 TARGETDATE</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="43" parent="8" name="CONSTRAINT_4">
+    <key id="44" parent="8" name="CONSTRAINT_4">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ID
 TARGETDATE</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="44" parent="9" name="USERNAME">
+    <column id="45" parent="9" name="GROUPID">
+      <Position>1</Position>
+      <DataType>VARCHAR(20)|12s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="46" parent="9" name="USERNAME">
+      <Position>2</Position>
+      <DataType>VARCHAR(20)|12s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="47" parent="9" name="PRIMARY_KEY_4">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>GROUPID
+USERNAME</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="48" parent="9" name="GROUPMEMBERS_PK">
+      <ColNames>GROUPID
+USERNAME</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="49" parent="10" name="USERNAME">
       <Position>1</Position>
       <DataType>VARCHAR(30)|12s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="45" parent="9" name="GROUPID">
+    <column id="50" parent="10" name="GROUPID">
       <Position>2</Position>
       <DataType>VARCHAR(30)|12s</DataType>
     </column>
-    <column id="46" parent="9" name="MESSAGE">
+    <column id="51" parent="10" name="MESSAGE">
       <Position>3</Position>
       <DataType>VARCHAR(10000)|12s</DataType>
     </column>
-    <column id="47" parent="9" name="DATE">
+    <column id="52" parent="10" name="DATE">
       <Position>4</Position>
       <DataType>TIMESTAMP(23,10)|93s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="48" parent="9" name="PRIMARY_KEY_1">
+    <index id="53" parent="10" name="PRIMARY_KEY_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>USERNAME
 DATE</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="49" parent="9" name="MESSAGES_PK">
+    <key id="54" parent="10" name="MESSAGES_PK">
       <ColNames>USERNAME
 DATE</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="50" parent="10" name="USERNAME">
+    <column id="55" parent="11" name="USERNAME">
       <Position>1</Position>
       <DataType>VARCHAR(20)|12s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="51" parent="10" name="PASSWORD">
+    <column id="56" parent="11" name="PASSWORD">
       <Position>2</Position>
       <DataType>VARCHAR(10)|12s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="52" parent="10" name="FIRSTNAME">
+    <column id="57" parent="11" name="FIRSTNAME">
       <Position>3</Position>
       <DataType>VARCHAR(20)|12s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="53" parent="10" name="SURNAME">
+    <column id="58" parent="11" name="SURNAME">
       <Position>4</Position>
       <DataType>VARCHAR(20)|12s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="54" parent="10" name="EMAIL">
+    <column id="59" parent="11" name="EMAIL">
       <Position>5</Position>
       <DataType>VARCHAR(40)|12s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="55" parent="10" name="ACTIVE">
+    <column id="60" parent="11" name="ACTIVE">
       <Position>6</Position>
       <DataType>BOOLEAN|16s</DataType>
     </column>
-    <index id="56" parent="10" name="PRIMARY_KEY_8">
+    <index id="61" parent="11" name="PRIMARY_KEY_8">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>USERNAME</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="57" parent="10" name="CONSTRAINT_1">
+    <key id="62" parent="11" name="CONSTRAINT_1">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>USERNAME</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="58" parent="11" name="USERNAME">
+    <column id="63" parent="12" name="USERNAME">
       <Position>1</Position>
       <DataType>VARCHAR(20)|12s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="59" parent="11" name="HEIGHT">
+    <column id="64" parent="12" name="HEIGHT">
       <Position>2</Position>
       <DataType>INTEGER(10)|4s</DataType>
     </column>
-    <column id="60" parent="11" name="WEIGHT">
+    <column id="65" parent="12" name="WEIGHT">
       <Position>3</Position>
       <DataType>DOUBLE(17)|8s</DataType>
     </column>
-    <column id="61" parent="11" name="BMI">
+    <column id="66" parent="12" name="BMI">
       <Position>4</Position>
       <DataType>INTEGER(10)|4s</DataType>
     </column>
-    <column id="62" parent="11" name="AGE">
+    <column id="67" parent="12" name="AGE">
       <Position>5</Position>
       <DataType>INTEGER(10)|4s</DataType>
     </column>
-    <column id="63" parent="11" name="SEX">
+    <column id="68" parent="12" name="SEX">
       <Position>6</Position>
       <DataType>INTEGER(10)|4s</DataType>
     </column>
-    <column id="64" parent="11" name="ACTIVITYLEVEL">
+    <column id="69" parent="12" name="ACTIVITYLEVEL">
       <Position>7</Position>
       <DataType>DOUBLE(17)|8s</DataType>
     </column>
-    <index id="65" parent="11" name="PRIMARY_KEY_27">
+    <index id="70" parent="12" name="PRIMARY_KEY_27">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>USERNAME</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="66" parent="11" name="CONSTRAINT_2">
+    <key id="71" parent="12" name="CONSTRAINT_2">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>USERNAME</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="67" parent="11" name="CONSTRAINT_27">
+    <foreign-key id="72" parent="12" name="CONSTRAINT_27">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>USERNAME</ColNames>
       <RefTableName>PROFILE</RefTableName>
