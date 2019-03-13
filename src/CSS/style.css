@@ -316,3 +316,19 @@
 .sendButton:hover *.sendGlyph {
     -fx-fill: #F8A032;
 }
+
+.update1 {
+    -fx-background-color:  #F8A032;
+}
+
+.update2 {
+    -fx-background-color:  #8BC1E7;
+}
+
+.update1:hover {
+    -fx-background-color: #FBCB8F;
+}
+
+.update2:hover {
+    -fx-background-color: #B5D7EF;
+}

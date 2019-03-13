@@ -2,6 +2,7 @@ package Controllers;
 
 import DBClasses.DBAdd;
 import DBClasses.LoadUser;
+import Model.Exercise;
 import Model.Goal;
 import application.Launch;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,7 @@ import javafx.scene.control.ProgressIndicator;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Line;
+import javafx.stage.Stage;
 import org.h2.jdbc.JdbcSQLException;
 
 import java.io.IOException;
@@ -153,5 +155,21 @@ public class GoalsController implements Initializable {
         Launch.mainCheck();
         Parent root = FXMLLoader.load(getClass().getResource("/View/settings.fxml"));
         Launch.stage.getScene().setRoot(root);
+    }
+
+    public void updateWeight(MouseEvent mouseEvent) throws IOException {
+        if (Launch.stage == Launch.primary) {
+            Parent root = FXMLLoader.load(getClass().getResource("/View/updateFoodGoal.fxml"));
+            Launch.newWindow(root, new Stage());
+            Launch.stage.setAlwaysOnTop(true);
+        }
+    }
+
+    public void updateExercise(MouseEvent mouseEvent) throws IOException {
+        if (Launch.stage == Launch.primary) {
+            Parent root = FXMLLoader.load(getClass().getResource("/View/updateExerciseGoal.fxml"));
+            Launch.newWindow(root, new Stage());
+            Launch.stage.setAlwaysOnTop(true);
+        }
     }
 }

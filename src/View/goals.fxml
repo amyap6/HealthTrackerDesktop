@@ -402,12 +402,12 @@
                                     </VBox>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="235.0" spacing="10.0">
                                        <children>
-                                          <Button minHeight="50.0" mnemonicParsing="false" prefWidth="185.0" style="-fx-background-radius: 0px; -fx-background-color: #F8A032;" text="Update Weight Goal" textFill="WHITE">
+                                          <Button minHeight="50.0" mnemonicParsing="false" onMouseClicked="#updateWeight" prefWidth="185.0" style="-fx-background-radius: 0px;" styleClass="update1" text="Update Weight Goal" textFill="WHITE">
                                              <font>
                                                 <Font name="PingFang HK Regular" size="13.0" />
                                              </font>
                                           </Button>
-                                          <Button minHeight="50.0" mnemonicParsing="false" prefWidth="185.0" style="-fx-background-radius: 0px; -fx-background-color: #8BC1E7;" text="Update Exercise Goal" textFill="WHITE">
+                                          <Button minHeight="50.0" mnemonicParsing="false" onMouseClicked="#updateExercise" prefWidth="185.0" style="-fx-background-radius: 0px;" styleClass="update2" text="Update Exercise Goal" textFill="WHITE">
                                              <font>
                                                 <Font name="PingFang HK Regular" size="13.0" />
                                              </font>
