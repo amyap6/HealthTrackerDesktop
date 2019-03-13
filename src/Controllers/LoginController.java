@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -29,6 +30,16 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Launch.makeStageDraggable(topBar);
+
+        password.setOnKeyPressed(e -> {
+            if (e.getCode().equals(KeyCode.ENTER)) {
+                try {
+                    loginSubmit();
+                } catch (IOException IO) {
+                    IO.printStackTrace();
+                }
+            }
+        });
     }
 
     public void minimise(MouseEvent mouseEvent) {
@@ -48,6 +59,10 @@ public class LoginController implements Initializable {
     }
 
     public void login(MouseEvent mouseEvent) throws IOException {
+        loginSubmit();
+    }
+
+    public void loginSubmit() throws IOException {
         if (!validate()) {
             return;
         } else {

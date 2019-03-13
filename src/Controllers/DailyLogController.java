@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
@@ -67,6 +68,15 @@ public class DailyLogController implements Initializable {
             exerciseLabel.setText(String.valueOf(loss*-1));
             int net =  LoadUser.getCaloriesByDate(user,today,false) + loss;
             this.net.setText("Net Calories Today: " + net);
+
+            ArrayList<String> exerciseGoal = DBAdd.getExerciseGoal(Launch.getCurrentUser().getUserName());
+            int exerciseTarget = Integer.parseInt(exerciseGoal.get(1));
+            int exerciseBurned = LoadUser.getCaloriesByDate(Launch.getCurrentUser().getUserName(),
+                    new Date(Calendar.getInstance().getTime().getTime()), true);
+            double percentage = 1-((double)(exerciseTarget+exerciseBurned)/exerciseTarget);
+            exerciseProgress.setProgress(percentage);
+
+
         } catch (SQLException e) {
 
         }
@@ -171,5 +181,13 @@ public class DailyLogController implements Initializable {
 
     public static Exercise.Type getExercise() {
         return exercise;
+    }
+
+    public void updateWeight(MouseEvent mouseEvent) throws IOException {
+        if (Launch.stage == Launch.primary) {
+            Parent root = FXMLLoader.load(getClass().getResource("/View/updateWeight.fxml"));
+            Launch.newWindow(root, new Stage());
+            Launch.stage.setAlwaysOnTop(true);
+        }
     }
 }

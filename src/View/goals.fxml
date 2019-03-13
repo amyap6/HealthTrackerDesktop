@@ -234,56 +234,170 @@
                                  <children>
                                     <VBox prefHeight="200.0" prefWidth="235.0" style="-fx-border-color: rgba(0,0,0,0.1); -fx-border-width: 0px 1px 0px 0px;">
                                        <children>
-                                          <Label prefWidth="400.0" style="-fx-border-color: rgba(0,0,0,0.1); -fx-border-width: 0px 0px 1px 0px;" text="Current Weight Goal" textFill="#818181">
+                                          <Label prefWidth="400.0" style="-fx-border-color: rgba(0,0,0,0.1); -fx-border-width: 0px 0px 1px 0px;" text="Current Weight Goal" textFill="#000000cb">
                                              <padding>
                                                 <Insets bottom="10.0" left="15.0" right="10.0" top="10.0" />
                                              </padding>
                                              <font>
-                                                <Font name="PingFang HK Light" size="13.0" />
+                                                <Font name="PingFang HK Regular" size="13.0" />
                                              </font>
                                           </Label>
-                                          <VBox alignment="CENTER_LEFT" minHeight="131.0" spacing="7.0">
+                                          <VBox alignment="CENTER_LEFT" minHeight="132.0">
                                              <children>
-                                                <Label fx:id="start" text="Start Weight:" textFill="#818181">
-                                                   <font>
-                                                      <Font name="PingFang HK Light" size="13.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label fx:id="current" text="Current Weight:" textFill="#818181">
-                                                   <font>
-                                                      <Font name="PingFang HK Light" size="13.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label fx:id="target" text="Target Weight:" textFill="#818181">
-                                                   <font>
-                                                      <Font name="PingFang HK Light" size="13.0" />
-                                                   </font>
-                                                </Label>
-                                                <Label fx:id="progress" text="Progress:" textFill="#818181">
-                                                   <font>
-                                                      <Font name="PingFang HK Light" size="13.0" />
-                                                   </font>
-                                                </Label>
+                                                <HBox>
+                                                   <children>
+                                                      <Label minHeight="33.0" minWidth="160.0" style="-fx-background-color: rgba(0,0,0,0.05);" text="Start Weight" textFill="#000000cb">
+                                                         <padding>
+                                                            <Insets left="15.0" />
+                                                         </padding>
+                                                         <font>
+                                                            <Font name="PingFang HK Regular" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="start" minHeight="33.0" minWidth="73.0" style="-fx-background-color: rgba(0,0,0,0.05);" text="Label">
+                                                         <font>
+                                                            <Font name="PingFang HK Semibold" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Label minHeight="33.0" minWidth="160.0" text="Current Weight" textFill="#000000cb">
+                                                         <padding>
+                                                            <Insets left="15.0" />
+                                                         </padding>
+                                                         <font>
+                                                            <Font name="PingFang HK Regular" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="current" minHeight="33.0" minWidth="73.0" text="Label">
+                                                         <font>
+                                                            <Font name="PingFang HK Semibold" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Label minHeight="33.0" minWidth="160.0" style="-fx-background-color: rgba(0,0,0,0.05);" text="Target Weight" textFill="#000000cb">
+                                                         <padding>
+                                                            <Insets left="15.0" />
+                                                         </padding>
+                                                         <font>
+                                                            <Font name="PingFang HK Regular" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="target" minHeight="33.0" minWidth="73.0" style="-fx-background-color: rgba(0,0,0,0.05);" text="Label">
+                                                         <font>
+                                                            <Font name="PingFang HK Semibold" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Label minHeight="33.0" minWidth="160.0" text="Progress" textFill="#000000cb">
+                                                         <padding>
+                                                            <Insets left="15.0" />
+                                                         </padding>
+                                                         <font>
+                                                            <Font name="PingFang HK Regular" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="progress" minHeight="33.0" minWidth="73.0" text="Label">
+                                                         <font>
+                                                            <Font name="PingFang HK Semibold" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
                                              </children>
-                                             <padding>
-                                                <Insets left="15.0" />
-                                             </padding>
                                           </VBox>
                                        </children>
                                     </VBox>
                                     <VBox prefHeight="200.0" prefWidth="235.0" style="-fx-border-color: rgba(0,0,0,0.1); -fx-border-width: 0px 1px 0px 0px;">
                                        <children>
-                                          <Label prefWidth="400.0" style="-fx-border-color: rgba(0,0,0,0.1); -fx-border-width: 0px 0px 1px 0px;" text="Current Exercise Goal" textFill="#818181">
-                                             <VBox.margin>
-                                                <Insets />
-                                             </VBox.margin>
+                                          <Label prefWidth="400.0" style="-fx-border-color: rgba(0,0,0,0.1); -fx-border-width: 0px 0px 1px 0px;" text="Current Exercise Goal" textFill="#000000cb">
                                              <padding>
                                                 <Insets bottom="10.0" left="15.0" right="10.0" top="10.0" />
                                              </padding>
                                              <font>
-                                                <Font name="PingFang HK Light" size="13.0" />
+                                                <Font name="PingFang HK Regular" size="13.0" />
                                              </font>
                                           </Label>
+                                          <VBox alignment="CENTER_LEFT" minHeight="132.0">
+                                             <children>
+                                                <HBox>
+                                                   <children>
+                                                      <Label minHeight="33.0" minWidth="150.0" style="-fx-background-color: rgba(0,0,0,0.05);" text="Date Set" textFill="#000000cb">
+                                                         <padding>
+                                                            <Insets left="15.0" />
+                                                         </padding>
+                                                         <font>
+                                                            <Font name="PingFang HK Regular" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="set" minHeight="33.0" minWidth="83.0" style="-fx-background-color: rgba(0,0,0,0.05);" text="Label">
+                                                         <font>
+                                                            <Font name="PingFang HK Semibold" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Label minHeight="33.0" minWidth="150.0" text="Review Date" textFill="#000000cb">
+                                                         <padding>
+                                                            <Insets left="15.0" />
+                                                         </padding>
+                                                         <font>
+                                                            <Font name="PingFang HK Regular" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="review" minHeight="33.0" minWidth="83.0" text="Label">
+                                                         <font>
+                                                            <Font name="PingFang HK Semibold" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Label minHeight="33.0" minWidth="150.0" style="-fx-background-color: rgba(0,0,0,0.05);" text="Daily Burn Target" textFill="#000000cb">
+                                                         <padding>
+                                                            <Insets left="15.0" />
+                                                         </padding>
+                                                         <font>
+                                                            <Font name="PingFang HK Regular" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="burn" minHeight="33.0" minWidth="83.0" style="-fx-background-color: rgba(0,0,0,0.05);" text="Label">
+                                                         <font>
+                                                            <Font name="PingFang HK Semibold" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <HBox>
+                                                   <children>
+                                                      <Label minHeight="33.0" minWidth="150.0" text="Today's Progress" textFill="#000000cb">
+                                                         <padding>
+                                                            <Insets left="15.0" />
+                                                         </padding>
+                                                         <font>
+                                                            <Font name="PingFang HK Regular" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label fx:id="progress2" minHeight="33.0" minWidth="83.0" text="Label">
+                                                         <font>
+                                                            <Font name="PingFang HK Semibold" size="13.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
                                        </children>
                                     </VBox>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="235.0" spacing="10.0">

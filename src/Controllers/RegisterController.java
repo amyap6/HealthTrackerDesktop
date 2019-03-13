@@ -222,6 +222,8 @@ public class RegisterController implements Initializable {
             } else {
                 newUser.addGoal(startGoal);
                 DBAdd.addGoal(newUser.getUserName(), startGoal);
+                double target = (newUser.getAllowedCalories()*(newUser.getActivityLevel()-1))/2;
+                DBAdd.addExerciseGoal(newUser.getUserName(), (int)target);
             }
         }
 

@@ -1,5 +1,6 @@
 package Controllers;
 
+import DBClasses.DBAdd;
 import DBClasses.LoadUser;
 import Model.Goal;
 import application.Launch;
@@ -21,10 +22,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class GoalsController implements Initializable {
 
@@ -40,6 +38,10 @@ public class GoalsController implements Initializable {
     public ProgressIndicator dayProgress;
     public Label targetWeight;
     public Label currentWeight;
+    public Label set;
+    public Label review;
+    public Label burn;
+    public Label progress2;
     private XYChart.Series<String, Number> series;
 
     @Override
@@ -51,10 +53,31 @@ public class GoalsController implements Initializable {
         targetWeight.setText("Target Weight: " + (int)(weightGoal.getStartWeight()-weightGoal.getTargetWeightLoss()) + "kg");
         currentWeight.setText("Current Weight: " + (int)Launch.getCurrentUser().getWeight() + "kg");
         createChart();
-        start.setText("Start Weight: " + (int)weightGoal.getStartWeight() + "%");
-        target.setText(targetWeight.getText());
-        current.setText(currentWeight.getText());
-        progress.setText("Progress: " + (int)weightGoal.getPercentLost() + "%");
+        start.setText((int)weightGoal.getStartWeight() + "kg");
+        target.setText((int)(weightGoal.getStartWeight()-weightGoal.getTargetWeightLoss()) + "kg");
+        current.setText((int)Launch.getCurrentUser().getWeight() + "kg");
+        progress.setText((int)(DBAdd.getLostPercentage(Launch.getCurrentUser())*100) + "%");
+
+        try {
+            ArrayList<String> exerciseGoal = DBAdd.getExerciseGoal(Launch.getCurrentUser().getUserName());
+            int exerciseTarget = Integer.parseInt(exerciseGoal.get(1));
+            burn.setText(String.valueOf(exerciseTarget)+" kcal");
+            int exerciseBurned = LoadUser.getCaloriesByDate(Launch.getCurrentUser().getUserName(),
+                    new java.sql.Date(Calendar.getInstance().getTime().getTime()), true);
+            double percentage = (1-((double)(exerciseTarget+exerciseBurned)/exerciseTarget))*100;
+            progress2.setText((int)percentage + "%");
+
+            String temp1 = exerciseGoal.get(2);
+            String temp2 = exerciseGoal.get(3);
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            Date date1 = format.parse(temp1);
+            Date date2 = format.parse(temp2);
+            SimpleDateFormat format2 = new SimpleDateFormat("dd/MM/YY");
+            set.setText(format2.format(date1));
+            review.setText(format2.format(date2));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void createChart() {

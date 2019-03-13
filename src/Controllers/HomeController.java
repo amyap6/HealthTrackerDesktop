@@ -87,13 +87,13 @@ public class HomeController implements Initializable {
 
     public static void setGoalProgress(ProgressIndicator p, Label l) {
         User current = Launch.getCurrentUser();
-
-        double percentLost = 0;
-        if (current.getGoals().get(0).getPercentLost() > 0) {
-            percentLost = current.getGoals().get(0).getPercentLost();
+        double percentLost = DBAdd.getLostPercentage(current);
+        l.setText((int)(percentLost*100) + "%");
+        if (percentLost > 0) {
+            p.setProgress(percentLost);
+        } else {
+            p.setProgress(0);
         }
-        l.setText((int)percentLost + "%");
-        p.setProgress(percentLost/100);
     }
 
     public void minimise(MouseEvent mouseEvent) {

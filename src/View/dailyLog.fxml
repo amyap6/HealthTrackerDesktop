@@ -269,7 +269,7 @@
                                           </Label>
                                           <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="30.0">
                                              <graphic>
-                                                <FontAwesomeIconView fill="#00000080" glyphName="COG" size="30" styleClass="circleAdd2" />
+                                                <FontAwesomeIconView fill="#00000080" glyphName="COG" onMouseClicked="#updateWeight" size="30" styleClass="circleAdd2" />
                                              </graphic>
                                           </Label>
                                        </children>

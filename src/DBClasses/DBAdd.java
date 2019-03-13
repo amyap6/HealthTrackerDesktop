@@ -5,6 +5,7 @@ import Model.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * Class holds static methods for adding to database
@@ -393,6 +394,66 @@ public final class DBAdd extends DBAccess{
         closeConnection();
     }
 
+    public static void addExerciseGoal(String user, int target) {
+        Date date = new Date(Calendar.getInstance().getTime().getTime());
+        Calendar cal = new GregorianCalendar();
+        cal.add(Calendar.MONTH,+1);
+        Date end = new Date(cal.getTime().getTime());
+        getConnection();
+        try {
+            st.executeUpdate("INSERT INTO EXERCISEGOALS VALUES ('"+user+"',"+target+",'"+date+"','"+end+"')");
+        } catch (SQLException e) {
+
+        }
+        closeConnection();
+    }
+
+    public static ArrayList<String> getExerciseGoal(String user) {
+        ResultSet rs = null;
+        ArrayList<String> goal = new ArrayList<>();
+        getConnection();
+        try {
+            rs = st.executeQuery("SELECT * FROM EXERCISEGOALS WHERE USERNAME = '"+user+"'");
+            rs.next();
+            goal.add(rs.getString(1));
+            goal.add(String.valueOf(rs.getInt(2)));
+            goal.add(rs.getString(3));
+            goal.add(rs.getString(4));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        closeConnection();
+        return goal;
+    }
+
+    public static double getLostPercentage(User user) {
+        ResultSet rs;
+        int start = 0;
+        int end = 0;
+        getConnection();
+        try {
+            rs = st.executeQuery("SELECT TARGETWEIGHTLOSS, STARTWEIGHT FROM GOALS WHERE ID = '"+user.getUserName()+"'");
+            rs.next();
+            start = rs.getInt(2);
+            end = rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        closeConnection();
+
+        return (start-user.getWeight())/end;
+    }
+
+    public static void updateWeight(String user, int weight) {
+        getConnection();
+        try {
+            st.executeUpdate("UPDATE USER SET WEIGHT = "+weight+" WHERE USERNAME = '"+user+"'");
+        } catch (SQLException e) {
+
+        }
+        closeConnection();
+    }
+
 
     public static void main(String[] args) {
         //System.out.println(new Date(119,2,3));
@@ -476,5 +537,4 @@ public final class DBAdd extends DBAccess{
         addExercise(new Exercise("Star Jumps", Exercise.Type.STRENGTH, 0.063));
         addExercise(new Exercise("Resistance Training", Exercise.Type.STRENGTH, 0.048));*/
     }
-
 }
